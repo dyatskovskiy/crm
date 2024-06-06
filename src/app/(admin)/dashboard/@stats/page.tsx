@@ -10,6 +10,7 @@ const labelByStat: Record<keyof SummaryStats, string> = {
   newCompanies: 'New companies',
   activeCompanies: 'Total active companies',
 };
+
 export default async function Page({}: PageProps) {
   const data = await getSummaryStats();
 
