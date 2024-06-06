@@ -31,7 +31,7 @@ export default function PromotionForm({
 }: PromotionFormProps) {
   const queryClient = useQueryClient();
 
-  const { data: company } = useQuery({
+  const { data: company, isLoading } = useQuery({
     queryKey: ['companies', companyId],
     queryFn: () => getCompany(companyId),
     staleTime: 10 * 1000,
@@ -53,6 +53,11 @@ export default function PromotionForm({
   });
 
   const handleSubmit = async (values: PromotionFieldValues) => {
+    if (!company) {
+      console.error('Company data is not loaded');
+      return;
+    }
+
     await mutateAsync({
       ...values,
       discount: Number(values.discount) || 0,
@@ -64,6 +69,10 @@ export default function PromotionForm({
       onSubmit(values);
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Или любой другой индикатор загрузки
+  }
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
