@@ -3,7 +3,7 @@ import { getSummaryPromotions } from '@/lib/api';
 import SummaryTable from '@/app/components/summary-table';
 import SummaryTableHeader from '@/app/components/summary-table-header';
 import SummaryTableCell from '@/app/components/summary-table-cell';
-import DashboardCard from '@/app/components/dasboard-card';
+import DashboardCard from '@/app/components/dashboard-card';
 
 export interface PageProps {}
 

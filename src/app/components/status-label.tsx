@@ -1,5 +1,4 @@
 import React from 'react';
-
 import clsx from 'clsx';
 
 export enum Status {
@@ -33,7 +32,7 @@ export default function StatusLabel({
         },
       )}
     >
-      <div className="w-1 h-1 mr-2 rounded-full bg-current"></div>
+      <div className="w-1 h-1 mr-2 rounded-full bg-current" />
       {children}
     </div>
   );
