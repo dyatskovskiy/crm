@@ -61,6 +61,11 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   });
 
   const handleSubmit = async (values: CompanyFieldValues) => {
+    if (!categories || !countries) {
+      console.error('Categories or countries are not loaded');
+      return;
+    }
+
     await mutateAsync({
       ...values,
       categoryTitle:
@@ -73,7 +78,6 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
       onSubmit(values);
     }
   };
-
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className="flex flex-col gap-10">
